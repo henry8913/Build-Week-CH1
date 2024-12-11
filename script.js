@@ -200,6 +200,7 @@ function showResults() {
 
   // Nasconde il timer perché il quiz è finito
   document.querySelector('.timer').style.display = 'none';
+  document.querySelector('.question-footer').style.display = 'none';
 }
 
 // Funzione per avviare il timer
