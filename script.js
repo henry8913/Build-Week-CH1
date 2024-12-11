@@ -97,6 +97,3 @@
         incorrect_answers: ["Python", "C", "Jakarta"],
       },
     ];
-
-
-    console.log(ciao)
