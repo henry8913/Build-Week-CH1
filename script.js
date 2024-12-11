@@ -98,8 +98,7 @@
       },
     ];
 
-  
-// Funzione per verificare la risposta
+    // Funzione per verificare la risposta
 function checkAnswer(selectedAnswer, correctAnswer) {
   if (selectedAnswer === correctAnswer) {
     score++;
@@ -194,7 +193,7 @@ function nextQuestion() {
 // Funzione per mostrare i risultati alla fine del quiz
 function showResults() {
   // Mostra un messaggio con il punteggio finale
-  questionTitle.innerHTML = `il risultato finale è ${score} su ${totalQuestions}.`;
+  questionTitle.innerHTML = `Il risultato finale è ${score} su ${totalQuestions}.`;
 
   // Pulisce il contenitore delle risposte per rimuovere i pulsanti
   answersContainer.innerHTML = ''; 
@@ -227,6 +226,3 @@ function resetTimer() {
 // Inizializza il quiz mostrando la prima domanda e avviando il timer
 showQuestion(currentQuestionIndex); // Mostra la prima domanda (indice 0)
 startTimer(); // Avvia il timer per la prima domanda
-
-
-console.log(ciao)
