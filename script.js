@@ -246,7 +246,6 @@ startTimer(); // Avvia il timer
 //_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
 // THE END
 
-// Funzione per mostrare i risultati alla fine del quiz
 function showResults() {
   // Mostra un messaggio con il punteggio finale
   questionTitle.innerHTML = `Il risultato finale è ${score} su ${totalQuestions}.`;
@@ -257,6 +256,34 @@ function showResults() {
   // Nasconde il timer perché il quiz è finito
   document.querySelector(".timer").style.display = "none";
   document.querySelector(".question-footer").style.display = "none";
+
+  // Calcola risposte corrette e sbagliate
+  const correctAnswers = score;
+  const wrongAnswers = totalQuestions - score;
+
+  // Configura il grafico
+  const ctx = document.getElementById('resultsChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Corrette', 'Sbagliate'],
+      datasets: [{
+        data: [correctAnswers, wrongAnswers],
+        backgroundColor: ['#4CAF50', '#F44336'], // Verde per corrette, rosso per sbagliate
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top'
+        }
+      }
+    }
+  });
 }
+
 
 //_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//

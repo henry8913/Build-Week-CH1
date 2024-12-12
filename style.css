@@ -204,3 +204,11 @@ svg {
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 1s linear;
 }
+
+#resultsChart {
+    max-width: 300px; /* Limita la larghezza massima del canvas */
+    max-height: 300px; /* Limita l'altezza massima del canvas */
+    width: 100%; /* Si adatta in base al contenitore */
+    height: auto;
+    margin: auto;
+  }
