@@ -93,22 +93,6 @@ h1 span {
     text-align: center;
 }
 
-.timer {
-    font-family: 'Outfit', sans-serif;
-    font-size: 14px;
-    text-align: right;
-    color: #00c9ff;
-    margin-top: 20px;
-    position: absolute;
-    top: 20px;
-    right: 15vh;
-}
-
-.timer-seconds {
-    font-size: 32px;
-    font-weight: bold;
-}
-
 /* Answers Section */
 .answers-container {
     display: grid;
@@ -159,4 +143,39 @@ h1 span {
 
 .question-footer {
     margin-top: 25vh;
+}
+
+.timer {
+    font-family: 'Outfit', sans-serif;
+    position: absolute;
+    margin-top: 20px;
+    text-align: center;
+    top: 20px;
+    right: 15vh;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 10px solid rgba(0, 0, 0, 0.5);
+    border-image: conic-gradient(#444 0deg, #444 360deg) 1;
+}
+
+.timer p {
+    margin: 5px 0;
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #ddd;
+}
+
+#timer-seconds {
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
 }
