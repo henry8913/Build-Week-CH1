@@ -1,127 +1,109 @@
 //_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
 // CHECKBOX
 
-
 // Attendi che il DOM sia caricato
-window.addEventListener('DOMContentLoaded', () => {
-  const checkbox = document.getElementById('promise');
-  const proceedLink = document.querySelector('.proceed-button a');
+window.addEventListener("DOMContentLoaded", () => {
+  const checkbox = document.getElementById("promise");
+  const proceedLink = document.querySelector(".proceed-button a");
 
   // Evento click al link
-  proceedLink.addEventListener('click', (event) => {
-      if (!checkbox.checked) {
-          event.preventDefault();
-          alert('Devi spuntare "I promise to answer myself without help from anyone" per procedere.');
+  proceedLink.addEventListener("click", (event) => {
+    if (!checkbox.checked) {
+      event.preventDefault();
+      alert('Devi spuntare "I promise to answer myself without help from anyone" per procedere.');
 
-          checkbox.style.outline = '2px solid red';
-          checkbox.style.outlineOffset = '2px';
-      } else {
-          checkbox.style.outline = 'none';
-      }
+      checkbox.style.outline = "2px solid red";
+      checkbox.style.outlineOffset = "2px";
+    } else {
+      checkbox.style.outline = "none";
+    }
   });
 });
 
 //_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
-    
-    const questions = [
-      {
-        category: "Science: Computers",
-        type: "multiple",
-        difficulty: "easy",
-        question: "What does CPU stand for?",
-        correct_answer: "Central Processing Unit",
-        incorrect_answers: [
-          "Central Process Unit",
-          "Computer Personal Unit",
-          "Central Processor Unit",
-        ],
-      },
-      {
-        category: "Science: Computers",
-        type: "multiple",
-        difficulty: "easy",
-        question:
-          "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
-        correct_answer: "Final",
-        incorrect_answers: ["Static", "Private", "Public"],
-      },
-      {
-        category: "Science: Computers",
-        type: "boolean",
-        difficulty: "easy",
-        question: "The logo for Snapchat is a Bell.",
-        correct_answer: "False",
-        incorrect_answers: ["True"],
-      },
-      {
-        category: "Science: Computers",
-        type: "boolean",
-        difficulty: "easy",
-        question:
-          "Pointers were not used in the original C programming language; they were added later on in C++.",
-        correct_answer: "False",
-        incorrect_answers: ["True"],
-      },
-      {
-        category: "Science: Computers",
-        type: "multiple",
-        difficulty: "easy",
-        question:
-          "What is the most preferred image format used for logos in the Wikimedia database?",
-        correct_answer: ".svg",
-        incorrect_answers: [".png", ".jpeg", ".gif"],
-      },
-      {
-        category: "Science: Computers",
-        type: "multiple",
-        difficulty: "easy",
-        question: "In web design, what does CSS stand for?",
-        correct_answer: "Cascading Style Sheet",
-        incorrect_answers: [
-          "Counter Strike: Source",
-          "Corrective Style Sheet",
-          "Computer Style Sheet",
-        ],
-      },
-      {
-        category: "Science: Computers",
-        type: "multiple",
-        difficulty: "easy",
-        question:
-          "What is the code name for the mobile operating system Android 7.0?",
-        correct_answer: "Nougat",
-        incorrect_answers: [
-          "Ice Cream Sandwich",
-          "Jelly Bean",
-          "Marshmallow",
-        ],
-      },
-      {
-        category: "Science: Computers",
-        type: "multiple",
-        difficulty: "easy",
-        question: "On Twitter, what is the character limit for a Tweet?",
-        correct_answer: "140",
-        incorrect_answers: ["120", "160", "100"],
-      },
-      {
-        category: "Science: Computers",
-        type: "boolean",
-        difficulty: "easy",
-        question: "Linux was first created as an alternative to Windows XP.",
-        correct_answer: "False",
-        incorrect_answers: ["True"],
-      },
-      {
-        category: "Science: Computers",
-        type: "multiple",
-        difficulty: "easy",
-        question:
-          "Which programming language shares its name with an island in Indonesia?",
-        correct_answer: "Java",
-        incorrect_answers: ["Python", "C", "Jakarta"],
-      },
-    ];
+
+const questions = [
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What does CPU stand for?",
+    correct_answer: "Central Processing Unit",
+    incorrect_answers: ["Central Process Unit", "Computer Personal Unit", "Central Processor Unit"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "easy",
+    question: "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+    correct_answer: "Final",
+    incorrect_answers: ["Static", "Private", "Public"],
+  },
+  {
+    category: "Science: Computers",
+    type: "boolean",
+    difficulty: "easy",
+    question: "The logo for Snapchat is a Bell.",
+    correct_answer: "False",
+    incorrect_answers: ["True"],
+  },
+  {
+    category: "Science: Computers",
+    type: "boolean",
+    difficulty: "easy",
+    question: "Pointers were not used in the original C programming language; they were added later on in C++.",
+    correct_answer: "False",
+    incorrect_answers: ["True"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What is the most preferred image format used for logos in the Wikimedia database?",
+    correct_answer: ".svg",
+    incorrect_answers: [".png", ".jpeg", ".gif"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "easy",
+    question: "In web design, what does CSS stand for?",
+    correct_answer: "Cascading Style Sheet",
+    incorrect_answers: ["Counter Strike: Source", "Corrective Style Sheet", "Computer Style Sheet"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What is the code name for the mobile operating system Android 7.0?",
+    correct_answer: "Nougat",
+    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "easy",
+    question: "On Twitter, what is the character limit for a Tweet?",
+    correct_answer: "140",
+    incorrect_answers: ["120", "160", "100"],
+  },
+  {
+    category: "Science: Computers",
+    type: "boolean",
+    difficulty: "easy",
+    question: "Linux was first created as an alternative to Windows XP.",
+    correct_answer: "False",
+    incorrect_answers: ["True"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "easy",
+    question: "Which programming language shares its name with an island in Indonesia?",
+    correct_answer: "Java",
+    incorrect_answers: ["Python", "C", "Jakarta"],
+  },
+];
 
 //_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
 // QUIZ
@@ -154,11 +136,11 @@ let timeLeft = 60; // Tempo rimanente per rispondere a ciascuna domanda (in seco
 const totalQuestions = questions.length; // Numero totale di domande
 
 // Riferimenti agli elementi HTML che verranno aggiornati dinamicamente
-const questionTitle = document.querySelector('.question-title'); // L'elemento che mostrerà la domanda
-const answersContainer = document.querySelector('.answers-container'); // Il contenitore che mostrerà le risposte
-const timerElement = document.querySelector('.timer-seconds'); // L'elemento del timer per mostrare i secondi rimanenti
-const currentQuestionElement = document.querySelector('.current-question'); // Mostra il numero della domanda corrente
-const totalQuestionsElement = document.querySelector('.total-questions'); // Mostra il numero totale di domande
+const questionTitle = document.querySelector(".question-title"); // L'elemento che mostrerà la domanda
+const answersContainer = document.querySelector(".answers-container"); // Il contenitore che mostrerà le risposte
+const timerElement = document.querySelector(".timer-seconds"); // L'elemento del timer per mostrare i secondi rimanenti
+const currentQuestionElement = document.querySelector(".current-question"); // Mostra il numero della domanda corrente
+const totalQuestionsElement = document.querySelector(".total-questions"); // Mostra il numero totale di domande
 
 // Imposta il numero totale di domande all'inizio del quiz
 totalQuestionsElement.textContent = totalQuestions;
@@ -166,7 +148,7 @@ totalQuestionsElement.textContent = totalQuestions;
 // Funzione per mostrare una domanda specifica
 function showQuestion(questionIndex) {
   const currentQuestion = questions[questionIndex]; // Ottieni la domanda corrente in base all'indice
-  
+
   // Aggiorna il numero della domanda corrente nel footer
   currentQuestionElement.textContent = questionIndex + 1;
 
@@ -178,16 +160,16 @@ function showQuestion(questionIndex) {
   answers.sort(() => Math.random() - 0.5); // Mescola l'array delle risposte
 
   // Pulisce le risposte precedenti dall'HTML
-  answersContainer.innerHTML = ''; 
+  answersContainer.innerHTML = "";
 
   // Crea un pulsante per ogni risposta e lo aggiunge al contenitore
-  answers.forEach(answer => {
-    const button = document.createElement('button'); // Crea un nuovo elemento 'button'
-    button.classList.add('answer-button'); // Aggiungi una classe per lo stile
+  answers.forEach((answer) => {
+    const button = document.createElement("button"); // Crea un nuovo elemento 'button'
+    button.classList.add("answer-button"); // Aggiungi una classe per lo stile
     button.innerHTML = answer; // Inserisci il testo della risposta nel bottone
 
     // Aggiungi un evento 'click' al pulsante per gestire la selezione della risposta
-    button.addEventListener('click', () => checkAnswer(answer, currentQuestion.correct_answer));
+    button.addEventListener("click", () => checkAnswer(answer, currentQuestion.correct_answer));
 
     // Aggiungi il pulsante al contenitore delle risposte
     answersContainer.appendChild(button);
@@ -223,26 +205,26 @@ function nextQuestion() {
 
 let timerInterval; // Variabile per l'intervallo del timer
 
-function startTimer() { 
+function startTimer() {
   clearInterval(timerInterval);
 
+  clearInterval(timerInterval);
+  const circle = document.getElementById("timer-circle");
+  const totalLength = 2 * Math.PI * 90; // Circumferenza del cerchio (r=90)
+  circle.style.strokeDasharray = totalLength;
+
   timerInterval = setInterval(() => {
-      timeLeft--;
-      timerElement.textContent = timeLeft;
+    timeLeft--;
+    timerElement.textContent = timeLeft;
 
-      // Aggiorna il gradiente del bordo dinamico
-      const timerCircle = document.querySelector('.timer');
-      const degrees = ((60 - timeLeft) / 60) * 360;
-      timerCircle.style.borderImage = `conic-gradient(
-          #00d8ff ${degrees}deg, 
-          rgba(0, 0, 0, 0.5) 0deg
-      ) 1`;
-      timerCircle.style.borderRadius = '50%'; // Mantiene il cerchio
+    // Calcola il nuovo offset basato sul tempo rimanente
+    const offset = totalLength - (timeLeft / 60) * totalLength;
+    circle.style.strokeDashoffset = offset;
 
-      if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          nextQuestion();
-      }
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      nextQuestion();
+    }
   }, 1000);
 }
 
@@ -250,13 +232,16 @@ function resetTimer() {
   clearInterval(timerInterval);
   timeLeft = 60;
   timerElement.textContent = timeLeft;
+
+  const circle = document.getElementById("timer-circle");
+  circle.style.strokeDashoffset = 0;
+
   startTimer();
 }
 
 // Avvio iniziale del quiz
 showQuestion(currentQuestionIndex); // Mostra la prima domanda
 startTimer(); // Avvia il timer
-
 
 //_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
 // THE END
@@ -267,11 +252,11 @@ function showResults() {
   questionTitle.innerHTML = `Il risultato finale è ${score} su ${totalQuestions}.`;
 
   // Pulisce il contenitore delle risposte per rimuovere i pulsanti
-  answersContainer.innerHTML = ''; 
+  answersContainer.innerHTML = "";
 
   // Nasconde il timer perché il quiz è finito
-  document.querySelector('.timer').style.display = 'none';
-  document.querySelector('.question-footer').style.display = 'none';
+  document.querySelector(".timer").style.display = "none";
+  document.querySelector(".question-footer").style.display = "none";
 }
 
 //_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
