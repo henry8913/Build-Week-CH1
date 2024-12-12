@@ -1,4 +1,6 @@
 //_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
+// CHECKBOX
+
 
 // Attendi che il DOM sia caricato
 window.addEventListener('DOMContentLoaded', () => {
@@ -121,7 +123,10 @@ window.addEventListener('DOMContentLoaded', () => {
       },
     ];
 
-    // Funzione per verificare la risposta
+//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
+// QUIZ
+
+// Funzione per verificare la risposta
 function checkAnswer(selectedAnswer, correctAnswer) {
   if (selectedAnswer === correctAnswer) {
     score++;
@@ -213,22 +218,17 @@ function nextQuestion() {
   }
 }
 
-// Funzione per mostrare i risultati alla fine del quiz
-function showResults() {
-  // Mostra un messaggio con il punteggio finale
-  questionTitle.innerHTML = `Il risultato finale è ${score} su ${totalQuestions}.`;
+//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
+// TIMER
 
-  // Pulisce il contenitore delle risposte per rimuovere i pulsanti
-  answersContainer.innerHTML = ''; 
+let timerInterval; // Variabile per memorizzare l'intervallo
 
-  // Nasconde il timer perché il quiz è finito
-  document.querySelector('.timer').style.display = 'none';
-  document.querySelector('.question-footer').style.display = 'none';
-}
-
-// Funzione per avviare il timer
 function startTimer() {
-  const timerInterval = setInterval(() => {
+  // Ferma eventuali timer già attivi
+  clearInterval(timerInterval);
+
+  // Avvia un nuovo timer
+  timerInterval = setInterval(() => {
     timeLeft--; // Decrementa il tempo rimanente
     timerElement.textContent = timeLeft; // Aggiorna l'elemento del timer con il nuovo valore
 
@@ -242,7 +242,8 @@ function startTimer() {
 
 // Funzione per resettare il timer quando si passa a una nuova domanda
 function resetTimer() {
-  timeLeft = 60; // Resetta il tempo a 16 secondi
+  clearInterval(timerInterval); // Ferma il timer corrente
+  timeLeft = 60; // Resetta il tempo a 60 secondi
   timerElement.textContent = timeLeft; // Aggiorna l'elemento del timer
   startTimer(); // Riavvia il timer
 }
@@ -250,3 +251,21 @@ function resetTimer() {
 // Inizializza il quiz mostrando la prima domanda e avviando il timer
 showQuestion(currentQuestionIndex); // Mostra la prima domanda (indice 0)
 startTimer(); // Avvia il timer per la prima domanda
+
+//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
+// THE END
+
+// Funzione per mostrare i risultati alla fine del quiz
+function showResults() {
+  // Mostra un messaggio con il punteggio finale
+  questionTitle.innerHTML = `Il risultato finale è ${score} su ${totalQuestions}.`;
+
+  // Pulisce il contenitore delle risposte per rimuovere i pulsanti
+  answersContainer.innerHTML = ''; 
+
+  // Nasconde il timer perché il quiz è finito
+  document.querySelector('.timer').style.display = 'none';
+  document.querySelector('.question-footer').style.display = 'none';
+}
+
+//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
