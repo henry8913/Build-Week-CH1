@@ -221,36 +221,42 @@ function nextQuestion() {
 //_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
 // TIMER
 
-let timerInterval; // Variabile per memorizzare l'intervallo
+let timerInterval; // Variabile per l'intervallo del timer
 
-function startTimer() {
-  // Ferma eventuali timer già attivi
+function startTimer() { 
   clearInterval(timerInterval);
 
-  // Avvia un nuovo timer
   timerInterval = setInterval(() => {
-    timeLeft--; // Decrementa il tempo rimanente
-    timerElement.textContent = timeLeft; // Aggiorna l'elemento del timer con il nuovo valore
+      timeLeft--;
+      timerElement.textContent = timeLeft;
 
-    // Se il tempo è finito
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval); // Ferma il timer
-      nextQuestion(); // Passa automaticamente alla prossima domanda
-    }
-  }, 1000); // Il timer si aggiorna ogni secondo
+      // Aggiorna il gradiente del bordo dinamico
+      const timerCircle = document.querySelector('.timer');
+      const degrees = ((60 - timeLeft) / 60) * 360;
+      timerCircle.style.borderImage = `conic-gradient(
+          #00d8ff ${degrees}deg, 
+          rgba(0, 0, 0, 0.5) 0deg
+      ) 1`;
+      timerCircle.style.borderRadius = '50%'; // Mantiene il cerchio
+
+      if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          nextQuestion();
+      }
+  }, 1000);
 }
 
-// Funzione per resettare il timer quando si passa a una nuova domanda
 function resetTimer() {
-  clearInterval(timerInterval); // Ferma il timer corrente
-  timeLeft = 60; // Resetta il tempo a 60 secondi
-  timerElement.textContent = timeLeft; // Aggiorna l'elemento del timer
-  startTimer(); // Riavvia il timer
+  clearInterval(timerInterval);
+  timeLeft = 60;
+  timerElement.textContent = timeLeft;
+  startTimer();
 }
 
-// Inizializza il quiz mostrando la prima domanda e avviando il timer
-showQuestion(currentQuestionIndex); // Mostra la prima domanda (indice 0)
-startTimer(); // Avvia il timer per la prima domanda
+// Avvio iniziale del quiz
+showQuestion(currentQuestionIndex); // Mostra la prima domanda
+startTimer(); // Avvia il timer
+
 
 //_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
 // THE END
