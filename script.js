@@ -1,3 +1,26 @@
+//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
+
+// Attendi che il DOM sia caricato
+window.addEventListener('DOMContentLoaded', () => {
+  const checkbox = document.getElementById('promise');
+  const proceedLink = document.querySelector('.proceed-button a');
+
+  // Evento click al link
+  proceedLink.addEventListener('click', (event) => {
+      if (!checkbox.checked) {
+          event.preventDefault();
+          alert('Devi spuntare "I promise to answer myself without help from anyone" per procedere.');
+
+          checkbox.style.outline = '2px solid red';
+          checkbox.style.outlineOffset = '2px';
+      } else {
+          checkbox.style.outline = 'none';
+      }
+  });
+});
+
+//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
+    
     const questions = [
       {
         category: "Science: Computers",
@@ -227,5 +250,3 @@ function resetTimer() {
 // Inizializza il quiz mostrando la prima domanda e avviando il timer
 showQuestion(currentQuestionIndex); // Mostra la prima domanda (indice 0)
 startTimer(); // Avvia il timer per la prima domanda
-
-
