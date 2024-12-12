@@ -104,8 +104,9 @@ h1 span {
 }
 
 .question-container {
-  text-align: center;
-}
+    text-align: center;
+    margin-top: 240px;
+  }
 
 .question-container h1 {
   margin-top: 10vh;
@@ -149,22 +150,23 @@ h1 span {
 }
 
 .timer {
-  font-family: "Outfit", sans-serif;
-  position: absolute;
-  margin-top: 20px;
-  text-align: center;
-  top: 20px;
-  right: 15vh;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
+    font-family: "Outfit", sans-serif;
+    position: absolute;
+    margin-top: 20px;
+    text-align: center;
+    top: 20px;
+    right: 15vh;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 10;
+  }  
 
 .timer p {
   margin: 5px 0;
