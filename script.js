@@ -227,3 +227,5 @@ function resetTimer() {
 // Inizializza il quiz mostrando la prima domanda e avviando il timer
 showQuestion(currentQuestionIndex); // Mostra la prima domanda (indice 0)
 startTimer(); // Avvia il timer per la prima domanda
+
+
