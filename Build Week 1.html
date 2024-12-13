@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadati e risorse -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Build Week 1 - TEAM 2</title>
+
+    <!-- Collegamento ai file CSS -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Outfit:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <img src="img/epicode_logo.png" alt="Epicode Logo" class="logo">
     </header>
 
+    <!-- Contenuto principale -->
     <main class="main-content">
+        <!-- Titolo principale -->
         <h1>
             Welcome to <br>
             <span>your exam</span>
         </h1>     
+
+        <!-- Sezione istruzioni -->
         <h3>Instructions</h3>
         <p>
             We don’t expect most engineers to know the answers to all of these questions, 
@@ -35,21 +43,26 @@
             </li>
         </ul>
     
-    <div class="consent-section">
-        <div class="checkbox-container">
-            <input type="checkbox" id="promise" class="checkbox">
-            <label for="promise">
-                I promise to answer myself without help from anyone
-            </label>
+        <!-- Sezione consenso -->
+        <div class="consent-section">
+            <!-- Checkbox -->
+            <div class="checkbox-container">
+                <input type="checkbox" id="promise" class="checkbox">
+                <label for="promise">
+                    I promise to answer myself without help from anyone
+                </label>
+            </div>
+
+            <!-- Bottone per procedere -->
+            <div class="button-container">
+                <button class="proceed-button">
+                    <a href="test.html" class="proceed-button">PROCEED</a>
+                </button>
+            </div>
         </div>
-        <div class="button-container">
-            <button class="proceed-button"><a href="test.html" class="proceed-button">PROCEED</a></button>
-        </div>
-    </div>
     </main>
 
+    <!-- Collegamento al file JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
-
-
