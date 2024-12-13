@@ -52,21 +52,22 @@ h1 span {
     font-family: "Inter", sans-serif;
     font-size: 16px;
     margin-bottom: 2vh;
-    line-height: 2;
+    line-height: 1;
 }
 
 /* Lista istruzioni */
 .instructions-list {
     margin: 0;
     padding: 0;
-    list-style: none;
+    margin-left: 2em;
 }
 
 .instructions-list li {
     font-family: "Inter", sans-serif;
     font-size: 16px;
     margin-top: 4vh;
-    line-height: 1.5;
+    line-height: 0.5;
+    
 }
 
 .instructions-list li span {
