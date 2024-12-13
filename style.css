@@ -123,12 +123,29 @@ h1 span {
 /* Contenitore della domanda */
 .question-container {
     text-align: center;
-    margin-top: 240px;
+    margin-top: 200px;
 }
 
-.question-container h1 {
-    margin-top: 10vh;
+.question-title {
+  line-height: 1.0;
 }
+
+.text-normal {
+  font-family: "Outfit", sans-serif;
+  font-weight: 300;
+  margin-top: 0;
+  font-size: 40px;
+  display: inline;
+}
+
+.text-highlight {
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  margin-top: 0;
+  font-size: 40px;
+  display: inline;
+}
+
 
 /* Bottoni delle risposte */
 .answer-button {
@@ -177,7 +194,7 @@ h1 span {
 }
 
 .question-footer {
-    margin-top: 25vh;
+    margin-top: 150px;
 }
 
 /* Timer circolare */
