@@ -161,7 +161,6 @@ function nextQuestion() {
   }
 }
 
-// Funzione per mostrare una domanda specifica
 function showQuestion(questionIndex) {
   const currentQuestion = questions[questionIndex];
 
@@ -169,7 +168,25 @@ function showQuestion(questionIndex) {
   currentQuestionElement.textContent = questionIndex + 1;
 
   // Mostra la domanda
-  questionTitle.innerHTML = currentQuestion.question;
+  const questionText = currentQuestion.question;
+
+  if (questionText.length > 60) {
+    // Trova l'ultimo spazio prima del carattere 60 per non spezzare le parole
+    const breakpoint = questionText.lastIndexOf(" ", 60);
+    const firstPart = questionText.slice(0, breakpoint).trim();
+    const secondPart = questionText.slice(breakpoint).trim();
+
+    // Aggiunge le due parti con stili diversi
+    questionTitle.innerHTML = `
+      <span class="text-normal">${firstPart}</span><br>
+      <span class="text-highlight">${secondPart}</span>
+    `;
+  } else {
+    // Testo normale sotto i 60 caratteri
+    questionTitle.innerHTML = `
+      <span class="text-normal">${questionText}</span>
+    `;
+  }
 
   // Mescola le risposte
   let answers = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer];
