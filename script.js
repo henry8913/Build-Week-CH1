@@ -289,3 +289,6 @@ function showResults() {
 // ===============================
 showQuestion(currentQuestionIndex);
 startTimer();
+
+
+console.log
