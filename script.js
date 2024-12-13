@@ -1,12 +1,9 @@
-//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
-// CHECKBOX
-
-// Attendi che il DOM sia caricato
+// Importante: Attendi che il DOM sia completamente caricato
 window.addEventListener("DOMContentLoaded", () => {
   const checkbox = document.getElementById("promise");
   const proceedLink = document.querySelector(".proceed-button a");
 
-  // Evento click al link
+  // Gestione checkbox per abilitare il link
   proceedLink.addEventListener("click", (event) => {
     if (!checkbox.checked) {
       event.preventDefault();
@@ -20,8 +17,9 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
-
+// ===============================
+// Domande del quiz
+// ===============================
 const questions = [
   {
     category: "Science: Computers",
@@ -105,22 +103,56 @@ const questions = [
   },
 ];
 
-//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
-// QUIZ
+// ===============================
+// Variabili principali del quiz
+// ===============================
+let currentQuestionIndex = 0; // Indice della domanda corrente
+let score = 0; // Punteggio dell'utente
+let timeLeft = 60; // Tempo rimanente per rispondere (in secondi)
+const totalQuestions = questions.length; // Numero totale di domande
+
+// Elementi del DOM da aggiornare
+const questionTitle = document.querySelector(".question-title");
+const answersContainer = document.querySelector(".answers-container");
+const timerElement = document.querySelector(".timer-seconds");
+const currentQuestionElement = document.querySelector(".current-question");
+const totalQuestionsElement = document.querySelector(".total-questions");
+
+// Imposta il numero totale di domande
+totalQuestionsElement.textContent = totalQuestions;
+
+// ===============================
+// Funzioni principali del quiz
+// ===============================
 
 // Funzione per verificare la risposta
 function checkAnswer(selectedAnswer, correctAnswer) {
+  const buttons = document.querySelectorAll(".answer-button");
+
+  // Rimuove la classe "selected" da tutti i bottoni
+  buttons.forEach((button) => button.classList.remove("selected"));
+
+  // Aggiunge la classe "selected" al bottone cliccato
+  const clickedButton = Array.from(buttons).find((button) => button.textContent === selectedAnswer);
+  if (clickedButton) {
+    clickedButton.classList.add("selected");
+    clickedButton.style.backgroundColor = "#d20094"; // Evidenzia bottone selezionato
+    clickedButton.style.color = "white";
+    clickedButton.style.borderColor = "#d20094";
+  }
+
+  // Verifica la correttezza della risposta
   if (selectedAnswer === correctAnswer) {
     score++;
   }
-  // Passa alla domanda successiva
-  nextQuestion();
+
+  // Passa alla prossima domanda con un ritardo
+  setTimeout(() => nextQuestion(), 1000);
 }
 
 // Funzione per passare alla domanda successiva
 function nextQuestion() {
   currentQuestionIndex++;
-
   if (currentQuestionIndex < totalQuestions) {
     showQuestion(currentQuestionIndex);
     resetTimer();
@@ -129,95 +161,53 @@ function nextQuestion() {
   }
 }
 
-// Variabili per tracciare lo stato del quiz
-let currentQuestionIndex = 0; // Indice della domanda corrente
-let score = 0; // Punteggio dell'utente
-let timeLeft = 60; // Tempo rimanente per rispondere a ciascuna domanda (in secondi)
-const totalQuestions = questions.length; // Numero totale di domande
-
-// Riferimenti agli elementi HTML che verranno aggiornati dinamicamente
-const questionTitle = document.querySelector(".question-title"); // L'elemento che mostrerà la domanda
-const answersContainer = document.querySelector(".answers-container"); // Il contenitore che mostrerà le risposte
-const timerElement = document.querySelector(".timer-seconds"); // L'elemento del timer per mostrare i secondi rimanenti
-const currentQuestionElement = document.querySelector(".current-question"); // Mostra il numero della domanda corrente
-const totalQuestionsElement = document.querySelector(".total-questions"); // Mostra il numero totale di domande
-
-// Imposta il numero totale di domande all'inizio del quiz
-totalQuestionsElement.textContent = totalQuestions;
-
 // Funzione per mostrare una domanda specifica
 function showQuestion(questionIndex) {
-  const currentQuestion = questions[questionIndex]; // Ottieni la domanda corrente in base all'indice
+  const currentQuestion = questions[questionIndex];
 
-  // Aggiorna il numero della domanda corrente nel footer
+  // Aggiorna il numero della domanda corrente
   currentQuestionElement.textContent = questionIndex + 1;
 
-  // Mostra la domanda nel titolo
+  // Mostra la domanda
   questionTitle.innerHTML = currentQuestion.question;
 
-  // Unisci le risposte corrette e sbagliate e mescolale
+  // Mescola le risposte
   let answers = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer];
-  answers.sort(() => Math.random() - 0.5); // Mescola l'array delle risposte
+  answers.sort(() => Math.random() - 0.5);
 
-  // Pulisce le risposte precedenti dall'HTML
+  // Resetta il contenitore delle risposte
   answersContainer.innerHTML = "";
 
-  // Crea un pulsante per ogni risposta e lo aggiunge al contenitore
+  // Crea i bottoni per le risposte
   answers.forEach((answer) => {
-    const button = document.createElement("button"); // Crea un nuovo elemento 'button'
-    button.classList.add("answer-button"); // Aggiungi una classe per lo stile
-    button.innerHTML = answer; // Inserisci il testo della risposta nel bottone
+    const button = document.createElement("button");
+    button.classList.add("answer-button");
+    button.innerHTML = answer;
 
-    // Aggiungi un evento 'click' al pulsante per gestire la selezione della risposta
+    // Gestisce il clic sui bottoni
     button.addEventListener("click", () => checkAnswer(answer, currentQuestion.correct_answer));
 
-    // Aggiungi il pulsante al contenitore delle risposte
+    // Aggiunge il bottone al contenitore
     answersContainer.appendChild(button);
   });
 }
 
-// Funzione per verificare se la risposta selezionata è corretta
-function checkAnswer(selectedAnswer, correctAnswer) {
-  // Se la risposta selezionata è corretta, incrementa il punteggio
-  if (selectedAnswer === correctAnswer) {
-    score++; // Incrementa il punteggio
-  }
-
-  // Passa alla prossima domanda
-  nextQuestion();
-}
-
-// Funzione per passare alla domanda successiva
-function nextQuestion() {
-  currentQuestionIndex++; // Passa alla prossima domanda incrementando l'indice
-
-  // Se ci sono ancora domande da mostrare
-  if (currentQuestionIndex < totalQuestions) {
-    showQuestion(currentQuestionIndex); // Mostra la prossima domanda
-    resetTimer(); // Resetta il timer per la nuova domanda
-  } else {
-    showResults(); // Se non ci sono più domande, mostra i risultati finali
-  }
-}
-
-//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
-// TIMER
-
-let timerInterval; // Variabile per l'intervallo del timer
+// ===============================
+// Timer del quiz
+// ===============================
+let timerInterval;
 
 function startTimer() {
   clearInterval(timerInterval);
-
-  clearInterval(timerInterval);
   const circle = document.getElementById("timer-circle");
-  const totalLength = 2 * Math.PI * 90; // Circumferenza del cerchio (r=90)
+  const totalLength = 2 * Math.PI * 90;
   circle.style.strokeDasharray = totalLength;
 
   timerInterval = setInterval(() => {
     timeLeft--;
     timerElement.textContent = timeLeft;
 
-    // Calcola il nuovo offset basato sul tempo rimanente
+    // Aggiorna il cerchio del timer
     const offset = totalLength - (timeLeft / 60) * totalLength;
     circle.style.strokeDashoffset = offset;
 
@@ -239,37 +229,29 @@ function resetTimer() {
   startTimer();
 }
 
-// Avvio iniziale del quiz
-showQuestion(currentQuestionIndex); // Mostra la prima domanda
-startTimer(); // Avvia il timer
-
-//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
-// THE END
-
+// ===============================
+// Fine del quiz
+// ===============================
 function showResults() {
-  // Mostra un messaggio con il punteggio finale
   questionTitle.innerHTML = `Il risultato finale è ${score} su ${totalQuestions}.`;
-
-  // Pulisce il contenitore delle risposte per rimuovere i pulsanti
   answersContainer.innerHTML = "";
 
-  // Nasconde il timer perché il quiz è finito
+  // Nasconde elementi non più necessari
   document.querySelector(".timer").style.display = "none";
   document.querySelector(".question-footer").style.display = "none";
 
-  // Calcola risposte corrette e sbagliate
+  // Mostra i risultati finali con un grafico
   const correctAnswers = score;
   const wrongAnswers = totalQuestions - score;
-
-  // Configura il grafico
   const ctx = document.getElementById('resultsChart').getContext('2d');
+
   new Chart(ctx, {
     type: 'doughnut',
     data: {
       labels: ['Corrette', 'Sbagliate'],
       datasets: [{
         data: [correctAnswers, wrongAnswers],
-        backgroundColor: ['#4CAF50', '#F44336'], // Verde per corrette, rosso per sbagliate
+        backgroundColor: ['#4CAF50', '#F44336'],
         borderWidth: 1
       }]
     },
@@ -285,5 +267,8 @@ function showResults() {
   });
 }
 
-
-//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//_______//
+// ===============================
+// Avvio del quiz
+// ===============================
+showQuestion(currentQuestionIndex);
+startTimer();
