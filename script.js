@@ -357,7 +357,7 @@ function showResults() {
   }
 
   // Riproduci il file audio "applause.mp3" in loop
-  const backgroundMusic = new Audio('mp3/QUEEN -We Are The Champions.mp3');
+  const backgroundMusic = new Audio('mp3/QUEEN - We Are The Champions.mp3');
   backgroundMusic.loop = true;
   backgroundMusic.volume = 0.5;
   backgroundMusic.play();
