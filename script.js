@@ -321,8 +321,9 @@ function showResults() {
 // ===============================
 // Avvio del quiz
 // ===============================
+
+// Mescola le domande
+questions.sort(() => Math.random() - 0.5);
+
 showQuestion(currentQuestionIndex);
 startTimer();
-
-
-console.log
