@@ -316,13 +316,58 @@ function showResults() {
     legendContainer.appendChild(wrongLabel);
     document.querySelector('.question-container').appendChild(legendContainer);
   }
+
+  // Aggiungi il canvas per i coriandoli
+  let confettiCanvas = document.getElementById("confettiCanvas");
+  if (!confettiCanvas) {
+    confettiCanvas = document.createElement("canvas");
+    confettiCanvas.id = "confettiCanvas";
+    confettiCanvas.style.position = "fixed";
+    confettiCanvas.style.top = 0;
+    confettiCanvas.style.left = 0;
+    confettiCanvas.style.width = "200vw";
+    confettiCanvas.style.height = "200vh";
+    confettiCanvas.style.pointerEvents = "none";
+    confettiCanvas.style.zIndex = 9999;
+    document.body.appendChild(confettiCanvas);
+  }
+
+  const confettiInstance = confetti.create(confettiCanvas, {
+    resize: true,
+    useWorker: true,
+  });
+
+  // Funzione per simulare la pioggia di coriandoli
+  function rainConfetti() {
+    confettiInstance({
+      particleCount: 5,
+      spread: 30,
+      startVelocity: 20,
+      ticks: 200,
+      gravity: 1,
+      origin: {
+        x: Math.random(),
+        y: 0,
+      },
+      colors: ['#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd'],
+    });
+
+    // Richiama la funzione in loop per creare un effetto continuo
+    setTimeout(rainConfetti, 100);
+  }
+
+  // Avvia la pioggia di coriandoli
+  rainConfetti();
+
+  // Rimuove il canvas dopo 2 minuti (120 secondi)
+  setTimeout(() => {
+    confettiCanvas.remove();
+  }, 120000); //
 }
 
 // ===============================
-// Avvio del quiz
+// Avvio del quiz & Mescola le domande
 // ===============================
-
-// Mescola le domande
 questions.sort(() => Math.random() - 0.5);
 
 showQuestion(currentQuestionIndex);
