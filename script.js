@@ -327,14 +327,14 @@ function showResults() {
     confettiCanvas.style.left = 0;
     confettiCanvas.style.width = "200vw";
     confettiCanvas.style.height = "200vh";
-    confettiCanvas.style.pointerEvents = "none"; // Per evitare problemi di clic
+    confettiCanvas.style.pointerEvents = "none";
     confettiCanvas.style.zIndex = 9999;
     document.body.appendChild(confettiCanvas);
   }
 
   const confettiInstance = confetti.create(confettiCanvas, {
-    resize: true, // Rende il canvas responsivo
-    useWorker: true, // Migliora le prestazioni
+    resize: true,
+    useWorker: true,
   });
 
   // Funzione per simulare la pioggia di coriandoli
@@ -344,12 +344,12 @@ function showResults() {
       spread: 30,
       startVelocity: 20,
       ticks: 200,
-      gravity: 1, // Aumenta l'effetto di caduta
+      gravity: 1,
       origin: {
-        x: Math.random(), // Randomizza la posizione orizzontale
-        y: 0, // Sempre dall'alto
+        x: Math.random(),
+        y: 0,
       },
-      colors: ['#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd'], // Colori personalizzati
+      colors: ['#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd'],
     });
 
     // Richiama la funzione in loop per creare un effetto continuo
@@ -357,9 +357,9 @@ function showResults() {
   }
 
   // Riproduci il file audio "applause.mp3" in loop
-  const backgroundMusic = new Audio('mp3/QUEEN - We Are The Champions.mp3');
-  backgroundMusic.loop = true; // Imposta il loop continuo
-  backgroundMusic.volume = 0.5; // Regola il volume (opzionale)
+  const backgroundMusic = new Audio('mp3/QUEEN -We Are The Champions.mp3');
+  backgroundMusic.loop = true;
+  backgroundMusic.volume = 0.5;
   backgroundMusic.play();
 
   // Avvia la pioggia di coriandoli
@@ -368,11 +368,10 @@ function showResults() {
   // Rimuove il canvas dopo 2 minuti
   setTimeout(() => {
     confettiCanvas.remove();
-    backgroundMusic.pause(); // Ferma la musica dopo 2 minuti
-    backgroundMusic.currentTime = 0; // Riporta la traccia all'inizio (opzionale)
-  }, 120000); // 120000 ms = 2 minuti
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+  }, 120000);
 }
-
 
 // ===============================
 // Avvio del quiz & Mescola le domande
