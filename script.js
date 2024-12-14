@@ -284,7 +284,7 @@ function showResults() {
       datasets: [{
         data: [correctAnswers, wrongAnswers],
         backgroundColor: ['#4CAF50', '#F44336'],
-        borderWidth: 1
+        borderWidth: 2
       }]
     },
     options: {
@@ -323,3 +323,6 @@ function showResults() {
 // ===============================
 showQuestion(currentQuestionIndex);
 startTimer();
+
+
+console.log
