@@ -235,8 +235,8 @@ h1 span {
 
 /* Grafico */
 #resultsChart {
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 250px;
+    max-height: 250px;
     width: 100%;
     height: auto;
     margin: auto;
@@ -264,6 +264,3 @@ svg {
     stroke-dasharray: 628;
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 1s linear;
-}
-
-/*ciao*/
