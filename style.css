@@ -236,10 +236,37 @@ h1 span {
 #resultsChart {
     max-width: 300px;
     max-height: 300px;
+    max-width: 450px;
+    max-height: 450px;
     width: 100%;
     height: auto;
     margin: auto;
 }
+
+/* Stile legenda personalizzata */
+.legend-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .legend-label {
+    margin-right: 20px;
+  }
+  
+  .legend-label:last-child {
+    margin-right: 0;
+  }
+  
+  .legend-label.corrette {
+    color: #4CAF50;
+    font-size: 24px;
+  }
+  
+  .legend-label.sbagliate {
+    color: #F44336;
+    font-size: 24px;
+  }
 
 /* Cerchio del timer */
 svg {

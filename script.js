@@ -251,18 +251,33 @@ function resetTimer() {
 // ===============================
 function showResults() {
   questionTitle.innerHTML = `Il risultato finale è ${score} su ${totalQuestions}.`;
-  answersContainer.innerHTML = "";
+
+  let canvas = document.getElementById('resultsChart');
+  if (!canvas) {
+    // Se il canvas non esiste, lo crea e lo aggiunge al DOM
+    canvas = document.createElement('canvas');
+    canvas.id = 'resultsChart';
+    canvas.width = 200;
+    canvas.height = 200;
+    document.querySelector('.question-container').appendChild(canvas);
+  }
 
   // Nasconde elementi non più necessari
   document.querySelector(".timer").style.display = "none";
   document.querySelector(".question-footer").style.display = "none";
+  document.querySelector(".answers-container").style.display = "none";
 
   // Mostra i risultati finali con un grafico
   const correctAnswers = score;
   const wrongAnswers = totalQuestions - score;
-  const ctx = document.getElementById('resultsChart').getContext('2d');
+  const ctx = canvas.getContext('2d');
 
-  new Chart(ctx, {
+  // Distruggi il grafico esistente se ce n'è uno già presente
+  if (window.chart) {
+    window.chart.destroy();
+  }
+
+  window.chart = new Chart(ctx, {
     type: 'doughnut',
     data: {
       labels: ['Corrette', 'Sbagliate'],
@@ -276,12 +291,31 @@ function showResults() {
       responsive: true,
       plugins: {
         legend: {
-          display: true,
-          position: 'top'
+          display: false
         }
       }
     }
   });
+
+  // Legenda personalizzata
+  let legendContainer = document.querySelector('.legend-container');
+  if (!legendContainer) {
+    // Se non esiste, crea la legenda
+    legendContainer = document.createElement('div');
+    legendContainer.className = 'legend-container';
+
+    const correctLabel = document.createElement('span');
+    correctLabel.textContent = 'Corrette';
+    correctLabel.className = 'legend-label corrette';
+
+    const wrongLabel = document.createElement('span');
+    wrongLabel.textContent = 'Sbagliate';
+    wrongLabel.className = 'legend-label sbagliate';
+
+    legendContainer.appendChild(correctLabel);
+    legendContainer.appendChild(wrongLabel);
+    document.querySelector('.question-container').appendChild(legendContainer);
+  }
 }
 
 // ===============================
